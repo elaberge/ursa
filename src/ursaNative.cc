@@ -505,15 +505,15 @@ Handle<Value> RsaWrap::GeneratePrivateKey(const Arguments& args) {
     // Sanity-check the arguments, since (as of this writing) OpenSSL
     // either doesn't check, or at least doesn't consistently check:
     //
-    // * The modulus bit count must be >= 512. Really, it just has to
+    // * The modulus bit count must be >= 384. Really, it just has to
     //   be a positive integer, but anything less than 512 is a
-    //   horrendously bad idea.
+    //   horrendously bad idea. Hacked for legacy support
     //
     // * The exponend must be positive and odd.
 
-    if (modulusBits < 512) {
+    if (modulusBits < 384) {
         Local<String> message =
-            String::New("Expected modulus bit count >= 512.");
+            String::New("Expected modulus bit count >= 384.");
         ThrowException(Exception::TypeError(message));
         return Undefined();
     }
