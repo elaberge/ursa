@@ -38,6 +38,8 @@ using namespace v8;
 void init(Handle<Object> target) {
     NODE_DEFINE_CONSTANT(target, RSA_PKCS1_PADDING);
     NODE_DEFINE_CONSTANT(target, RSA_PKCS1_OAEP_PADDING);
+    NODE_DEFINE_CONSTANT(target, RSA_SSLV23_PADDING);
+    NODE_DEFINE_CONSTANT(target, RSA_NO_PADDING);
     BIND(target, textToNid, TextToNid);
     RsaWrap::InitClass(target);
 
